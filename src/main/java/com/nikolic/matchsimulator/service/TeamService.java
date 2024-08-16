@@ -6,10 +6,13 @@ import lombok.Data;
 import org.springframework.stereotype.Service;
 
 @Service
-@Data
 public class TeamService {
 
-    private TeamRepository teamRepository;
+    private final TeamRepository teamRepository;
+
+    public TeamService(TeamRepository teamRepository) {
+        this.teamRepository = teamRepository;
+    }
 
     public Team addTeam(Team team) {
         return teamRepository.save(team);
